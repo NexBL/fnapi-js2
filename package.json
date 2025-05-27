@@ -16,16 +16,16 @@
     "lobbybot",
     "fortnite-bot"
   ],
-  "author": "Ajaxfnc",
+  "author": "AjaxFNC-YT",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ajaxfnc/fnapi-js.git"
+    "url": "git+https://github.com/AjaxFNC-YT/fnapi-js.git"
   },
   "bugs": {
-    "url": "https://github.com/ajaxfnc/fnapi-js/issues"
+    "url": "https://github.com/AjaxFNC-YT/fnapi-js/issues"
   },
-  "homepage": "https://github.com/ajaxfnc/fnapi-js#readme",
+  "homepage": "https://github.com/AjaxFNC-YT/fnapi-js#readme",
   "dependencies": {
     "axios": "^1.9.0"
   },
