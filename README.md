@@ -43,6 +43,9 @@ const creatorCode = await fnApi.sac.get('code');
 const aesKeys = await fnApi.aes.getKeys();
 ```
 
+## Check out the docs
+- [Documentation](https://github.com/AjaxFNC-YT/fnapi-js/blob/main/src/docs/DOCUMENTATION.md)
+
 ## Available Endpoints
 
 - Stats
