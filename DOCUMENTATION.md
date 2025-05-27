@@ -11,7 +11,7 @@ npm install fnapi-js
 ## Getting Started
 
 ```javascript
-import { ApiClient, RequestFlags } from 'fnapi-js';
+import { ApiClient, RequestFlags, Enums } from 'fnapi-js';
 
 // Initialize the API client
 const client = new ApiClient({
@@ -28,7 +28,14 @@ console.log(shop);
 
 - [API Client](#api-client)
 - [Response Object](#response-object)
-- [Request Flags](#request-flags)
+- [Enums](#enums)
+  - [Request Flags](#request-flags)
+  - [Account Type](#account-type)
+  - [Cosmetic Type](#cosmetic-type)
+  - [Language](#language)
+  - [Match Method](#match-method)
+  - [Stats Image](#stats-image)
+  - [Time Window](#time-window)
 - [Endpoints](#endpoints)
   - [Cosmetics](#cosmetics)
   - [Shop](#shop)
@@ -71,7 +78,17 @@ All API requests return a `Response` object with the following methods:
 - `body()`: Get the response body
 - `isSuccess()`: Check if the request was successful (status code 200-299)
 
-## Request Flags
+## Enums
+
+FNAPI-JS provides several enums to make it easier to work with the API. Import them using:
+
+```javascript
+import { Enums } from 'fnapi-js';
+// Or import specific enums
+import { RequestFlags, AccountType, Language } from 'fnapi-js';
+```
+
+### Request Flags
 
 Request flags can be used to include additional data in responses.
 
@@ -84,6 +101,144 @@ const pathsFlag = RequestFlags.paths(); // Include file paths
 const tagsFlag = RequestFlags.gameplayTags(); // Include gameplay tags
 const historyFlag = RequestFlags.shopHistory(); // Include shop history
 const noFlags = RequestFlags.none(); // No additional data
+
+// Combine multiple flags
+const combinedFlags = RequestFlags.multiple(
+  RequestFlags.FLAGS.INCLUDE_PATHS,
+  RequestFlags.FLAGS.INCLUDE_GAMEPLAY_TAGS
+);
+```
+
+### Account Type
+
+Used for specifying account platforms when fetching player stats.
+
+```javascript
+import { AccountType } from 'fnapi-js';
+
+// Available account types
+const epicAccount = AccountType.epic(); // Epic Games account
+const psnAccount = AccountType.psn(); // PlayStation Network account
+const xblAccount = AccountType.xbl(); // Xbox Live account
+```
+
+### Cosmetic Type
+
+Used for specifying cosmetic types when searching for cosmetics.
+
+```javascript
+import { CosmeticType } from 'fnapi-js';
+
+// Available cosmetic types
+const outfit = CosmeticType.outfit(); // Character outfits
+const emote = CosmeticType.emote(); // Emotes/dances
+const wrap = CosmeticType.wrap(); // Weapon/vehicle wraps
+const emoji = CosmeticType.emoji(); // Emojis
+const glider = CosmeticType.glider(); // Gliders
+const spray = CosmeticType.spray(); // Sprays
+const loadingscreen = CosmeticType.loadingscreen(); // Loading screens
+const contrail = CosmeticType.contrail(); // Contrails
+const shoes = CosmeticType.shoes(); // Shoes
+const pickaxe = CosmeticType.pickaxe(); // Harvesting tools
+const backpack = CosmeticType.backpack(); // Back blings
+const musicpack = CosmeticType.musicpack(); // Music packs
+const toy = CosmeticType.toy(); // Toys
+const pet = CosmeticType.pet(); // Pets
+
+// Vehicle cosmetics
+const vehicleSkin = CosmeticType.vehicleskin(); // Vehicle skins
+const vehicleWheel = CosmeticType.vehiclewheel(); // Vehicle wheels
+const vehicleBooster = CosmeticType.vehiclebooster(); // Vehicle boosters
+const vehicleDriftTrail = CosmeticType.vehicledrifttrail(); // Vehicle drift trails
+const vehicleBody = CosmeticType.vehiclebody(); // Vehicle bodies
+
+// LEGO/Building cosmetics
+const junoBuildingProp = CosmeticType.junobuildingprop(); // Decor bundles
+const junoBuildingSet = CosmeticType.junobuildingset(); // Building sets
+
+// Musical instruments
+const sparksGuitar = CosmeticType.sparksguitar(); // Guitars
+const sparksBass = CosmeticType.sparksbass(); // Bass guitars
+const sparksDrum = CosmeticType.sparksdrum(); // Drums
+const sparksMic = CosmeticType.sparksmic(); // Microphones
+const sparksKeyboard = CosmeticType.sparkskeyboard(); // Keytars
+const sparksAura = CosmeticType.sparksaura(); // Auras
+```
+
+### Language
+
+Used for specifying language preferences for API responses.
+
+```javascript
+import { Language } from 'fnapi-js';
+
+// Available languages
+const english = Language.english(); // English (en)
+const german = Language.german(); // German (de)
+const spanish = Language.spanish(); // Spanish (es)
+const spanishLatinAmerica = Language.spanishLatinAmerica(); // Spanish - Latin America (es-419)
+const french = Language.french(); // French (fr)
+const italian = Language.italian(); // Italian (it)
+const japanese = Language.japanese(); // Japanese (ja)
+const korean = Language.korean(); // Korean (ko)
+const polish = Language.polish(); // Polish (pl)
+const portugueseBrazil = Language.portugueseBrazil(); // Portuguese - Brazil (pt-BR)
+const russian = Language.russian(); // Russian (ru)
+const turkish = Language.turkish(); // Turkish (tr)
+const chineseSimplified = Language.chineseSimplified(); // Chinese - Simplified (zh-Hans)
+const chineseTraditional = Language.chineseTraditional(); // Chinese - Traditional (zh-Hant)
+const arabic = Language.arabic(); // Arabic (ar)
+const indonesian = Language.indonesian(); // Indonesian (id)
+const thai = Language.thai(); // Thai (th)
+const vietnamese = Language.vietnamese(); // Vietnamese (vi)
+
+// Get all available languages
+const allLanguages = Language.getAll();
+
+// Check if a language code is valid
+const isValid = Language.isValid('en'); // true
+```
+
+### Match Method
+
+Used for specifying how search terms should match when searching for cosmetics.
+
+```javascript
+import { MatchMethod } from 'fnapi-js';
+
+// Available match methods
+const fullMatch = MatchMethod.full(); // Exact match (same as exact())
+const exactMatch = MatchMethod.exact(); // Exact match (same as full())
+const containsMatch = MatchMethod.contains(); // Contains the search term
+const startsMatch = MatchMethod.starts(); // Starts with the search term
+const endsMatch = MatchMethod.ends(); // Ends with the search term
+```
+
+### Stats Image
+
+Used for specifying which stats images to include when fetching player stats.
+
+```javascript
+import { StatsImage } from 'fnapi-js';
+
+// Available stats image types
+const allImages = StatsImage.all(); // All input types
+const keyboardMouseImages = StatsImage.keyboardMouse(); // Keyboard and mouse only
+const gamepadImages = StatsImage.gamepad(); // Controller only
+const touchImages = StatsImage.touch(); // Touch input only
+const noImages = StatsImage.none(); // No images
+```
+
+### Time Window
+
+Used for specifying the time period when fetching player stats.
+
+```javascript
+import { TimeWindow } from 'fnapi-js';
+
+// Available time windows
+const lifetime = TimeWindow.lifetime(); // Lifetime stats
+const season = TimeWindow.season(); // Current season stats
 ```
 
 ## Endpoints
@@ -93,11 +248,13 @@ const noFlags = RequestFlags.none(); // No additional data
 Access Fortnite cosmetic items data.
 
 ```javascript
-// Get all cosmetics
-const cosmetics = await client.cosmetics.getAll(RequestFlags.none());
+import { RequestFlags, CosmeticType, SearchOptions, MatchMethod, Language } from 'fnapi-js';
 
-// Get new cosmetics
-const newCosmetics = await client.cosmetics.getAllNew(RequestFlags.none());
+// Get all cosmetics with additional data
+const cosmetics = await client.cosmetics.getAll(RequestFlags.all());
+
+// Get new cosmetics with file paths
+const newCosmetics = await client.cosmetics.getAllNew(RequestFlags.paths());
 
 // Get all music tracks
 const tracks = await client.cosmetics.getAllTracks(RequestFlags.none());
@@ -117,16 +274,17 @@ const legoKits = await client.cosmetics.getAllLegoKits(RequestFlags.none());
 // Get all beans
 const beans = await client.cosmetics.getAllBeans(RequestFlags.none());
 
-// Get cosmetic by ID
-const cosmetic = await client.cosmetics.getById('CID_001_Athena_Commando_F_Default', RequestFlags.none());
+// Get cosmetic by ID with gameplay tags
+const cosmetic = await client.cosmetics.getById('CID_001_Athena_Commando_F_Default', RequestFlags.gameplayTags());
 
-// Search cosmetics
-import { SearchOptions } from 'fnapi-js';
+// Search cosmetics using enums
 const searchOptions = new SearchOptions()
+  .setLanguage(Language.english())
   .setName('Renegade')
-  .setType('outfit');
+  .setType(CosmeticType.outfit())
+  .setMatchMethod(MatchMethod.contains());
   
-const searchResults = await client.cosmetics.search(searchOptions, RequestFlags.none(), true);
+const searchResults = await client.cosmetics.search(searchOptions, RequestFlags.all(), true);
 ```
 
 ### Shop
@@ -143,19 +301,21 @@ const shop = await client.shop.get();
 Get player statistics. Requires an API key.
 
 ```javascript
+import { AccountType, TimeWindow, StatsImage } from 'fnapi-js';
+
 // Get player stats by name
 const stats = await client.stats.get(
   'Ninja', // Player name
-  'epic', // Account type (epic, psn, xbl)
-  'lifetime', // Time window (lifetime, season)
-  'all' // Image type (all, keyboardMouse, gamepad, touch)
+  AccountType.epic(), // Account type
+  TimeWindow.lifetime(), // Time window
+  StatsImage.all() // Image type
 );
 
 // Get player stats by ID
 const statsById = await client.stats.byId(
   'player-account-id', 
-  'lifetime', 
-  'all'
+  TimeWindow.season(), 
+  StatsImage.keyboardMouse()
 );
 ```
 
@@ -234,16 +394,16 @@ const fixedPath = await client.misc.fixPath('FortniteGame/Content/path/to/file')
 The `SearchOptions` class provides a fluent interface for building search queries.
 
 ```javascript
-import { SearchOptions } from 'fnapi-js';
+import { SearchOptions, Language, MatchMethod, CosmeticType } from 'fnapi-js';
 
 const options = new SearchOptions()
-  .setLanguage('en') // Set response language
-  .setSearchLanguage('en') // Set search language
-  .setMatchMethod('contains') // Match method (contains, full, starts, ends)
+  .setLanguage(Language.english()) // Set response language
+  .setSearchLanguage(Language.english()) // Set search language
+  .setMatchMethod(MatchMethod.contains()) // Match method
   .setId('CID_001') // Search by ID
   .setName('Renegade') // Search by name
   .setDescription('description') // Search by description
-  .setType('outfit') // Search by type
+  .setType(CosmeticType.outfit()) // Search by type
   .setDisplayType('Outfit') // Search by display type
   .setBackendType('AthenaCharacter') // Search by backend type
   .setRarity('epic') // Search by rarity
