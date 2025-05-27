@@ -42,10 +42,10 @@ const handleCommand = async (m) => {
   
       try {
         await m.client.party.me.setEmote(emote.body().data.id, fnApi.misc.fixPath(emote.body().data.path));
-        await m.reply(`Set the emote to ${emote.body().data.name}!`);
+        console.log(`Set the emote to ${emote.body().data.name}!`);
       } catch (error) {
         console.log(error);
-        await m.reply(`Failed to set the emote due to: ${error.message}`);
+        console.log(`Failed to set the emote due to: ${error.message}`);
       }
     }
   };  
