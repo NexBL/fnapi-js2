@@ -1,6 +1,6 @@
 {
   "name": "fnapi-js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Unofficial API Wrapper for https://fortnite-api.com/",
   "main": "src/index.js",
   "types": "index.d.ts",

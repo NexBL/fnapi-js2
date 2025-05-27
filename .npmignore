@@ -12,15 +12,6 @@ test.js
 __tests__
 coverage
 
-# Examples
-examples/
-src/examples/
-
-# Documentation
-docs/
-*.md
-!README.md
-
 # Build files
 dist/
 build/
