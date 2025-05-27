@@ -9,7 +9,7 @@ import Playlists from './Playlists.js';
 import Shop from './Shop.js';
 import Stats from './Stats.js';
 import Banners from './Banners.js';
-
+import Misc from './Misc.js';
 
 class ApiClient {
     constructor(config = {}) {
@@ -39,6 +39,7 @@ class ApiClient {
         this.stats = new Stats(this);
         this.shop = new Shop(this);
         this.banners = new Banners(this);
+        this.misc = new Misc(this);
     }
 
     async request(method, path, data = null, options = {}) {

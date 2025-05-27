@@ -1,5 +1,5 @@
 
-import { ApiClient, Enums, SearchOptions } from '../index.js';
+import { ApiClient, Enums, SearchOptions } from '../index.js'; // if you are using this code, change this to the module name, so: fnapi-js
 import readline from 'readline';
 
 const fnApi = new ApiClient({ apiKey: 'api-key here' });
