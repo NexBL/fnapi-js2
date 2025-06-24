@@ -34,13 +34,13 @@ const searchOptions = new SearchOptions()
     .setRarity('epic')
     .setMatchMethod(Enums.matchMethod.contains());
 
-const cosmetics = await fnApi.cosmetics.searchCosmetics(searchOptions);
+const cosmetics = await fnApi.cosmetics.search(searchOptions);
 
 // Get creator code
 const creatorCode = await fnApi.sac.get('code');
 
 // Get AES keys
-const aesKeys = await fnApi.aes.getKeys();
+const aesKeys = await fnApi.aes.get();
 ```
 
 ## Check out the docs

@@ -165,7 +165,7 @@ class CosmeticType {
     static backpack() {
         return this.TYPES.BACKPACK.value;
     }
-
+    
     static vehicleskin() {
         return this.TYPES.VEHICLES_SKIN.value;
     }
