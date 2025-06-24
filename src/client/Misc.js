@@ -1,4 +1,4 @@
-import RequestFlags from '../enums/requestFlags.js';
+import RequestFlags from '../enums/RequestFlags.js';
 import SearchOptions from '../types/SearchOptions.js';
 
 class Misc {

@@ -49,7 +49,7 @@ class CosmeticType {
             backendValue: 'VehicleCosmetics_Skin'
         },
         MUSICPACK: {
-            value: 'lobby music',
+            value: 'music',
             backendValue: 'AthenaMusicPack'
         },
         VEHICLES_WHEEL: {
